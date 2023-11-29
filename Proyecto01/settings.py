@@ -21,8 +21,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-PORT = 8000
-
 # Application definition
 
 INSTALLED_APPS = [
