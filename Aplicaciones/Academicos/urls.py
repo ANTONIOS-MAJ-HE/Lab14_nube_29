@@ -48,10 +48,21 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('profile/', views.profile, name='profile'),  
 
+# Rutas para la API
+    path('api/especialidades/', views.especialidad_list, name='especialidad_list'),
+    path('api/especialidades/<str:nombre>/', views.especialidad_detail, name='especialidad_detail'),
 
+    path('api/docentes/', views.docente_list, name='docente_list'),
+    path('api/docentes/<int:id>/', views.docente_detail, name='docente_detail'),
 
+    path('api/cursos/', views.curso_list, name='curso_list'),
+    path('api/cursos/<str:codigo>/', views.curso_detail, name='curso_detail'),
 
+    path('api/alumnos/', views.alumno_list, name='alumno_list'),
+    path('api/alumnos/<int:id_alumno>/', views.alumno_detail, name='alumno_detail'),
 
+    path('api/contactos/', views.contacto_list, name='contacto_list'),
+    path('api/contactos/<str:codigo>/', views.contacto_detail, name='contacto_detail'),
 ]
 
 
