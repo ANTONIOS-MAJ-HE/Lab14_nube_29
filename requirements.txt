@@ -14,7 +14,7 @@ six
 sqlparse
 tzdata
 urllib3
-
+djangorestframework
 dj-database-url
 django-environ
 gunicorn
