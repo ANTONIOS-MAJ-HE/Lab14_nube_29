@@ -397,6 +397,37 @@ def signout(request):
     logout(request)
     return redirect('/')
 
+# Listado con DRF
+@api_view(['GET'])
+def curso_list(request):
+    cursos = Curso.objects.all()
+    serializer = CursoSerializer(cursos, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def docente_list(request):
+    docentes = Docente.objects.all()
+    serializer = DocenteSerializer(docentes, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def especialidad_list(request):
+    especialidades = Especialidad.objects.all()
+    serializer = EspecialidadSerializer(especialidades, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def alumno_list(request):
+    alumnos = Alumno.objects.all()
+    serializer = AlumnoSerializer(alumnos, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def contacto_list(request):
+    contactos = Contacto.objects.all()
+    serializer = ContactoSerializer(contactos, many=True)
+    return Response(serializer.data)
+
 # Detalles con DRF
 @api_view(['GET'])
 def curso_detail(request, codigo):
