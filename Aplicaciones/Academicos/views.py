@@ -1,10 +1,14 @@
+import statistics
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.db.models import Q
 from datetime import datetime
-from .models import Curso, Especialidad, Docente
-from .models import Alumno, Contacto
+from .models import Curso, Especialidad, Docente, Alumno, Contacto
+from .serializers import CursoSerializer, DocenteSerializer, EspecialidadSerializer, AlumnoSerializer, ContactoSerializer
 
 # Búsqueda
 
@@ -393,4 +397,53 @@ def signout(request):
     logout(request)
     return redirect('/')
 
+# Detalles con DRF
+@api_view(['GET'])
+def curso_detail(request, codigo):
+    try:
+        curso = Curso.objects.get(codigo=codigo)
+    except Curso.DoesNotExist:
+        return Response(status=statistics.HTTP_404_NOT_FOUND)
 
+    serializer = CursoSerializer(curso)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def docente_detail(request, id):
+    try:
+        docente = Docente.objects.get(id=id)
+    except Docente.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = DocenteSerializer(docente)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def especialidad_detail(request, nombre):
+    try:
+        especialidad = Especialidad.objects.get(nombre=nombre)
+    except Especialidad.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = EspecialidadSerializer(especialidad)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def alumno_detail(request, id_alumno):
+    try:
+        alumno = Alumno.objects.get(id_alumno=id_alumno)
+    except Alumno.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = AlumnoSerializer(alumno)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def contacto_detail(request, codigo):
+    try:
+        contacto = Contacto.objects.get(codigo=codigo)
+    except Contacto.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = ContactoSerializer(contacto)
+    return Response(serializer.data)
