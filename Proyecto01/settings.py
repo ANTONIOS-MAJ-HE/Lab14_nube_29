@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Aplicaciones.Academicos',
+    'rest_framework',
     'storages',
     'corsheaders',
     
@@ -88,7 +89,7 @@ DATABASES = {
         'NAME': 'dbcontactos',
         'USER': 'antu',
         'PASSWORD': 'T3csup4861',
-        'HOST': '54.162.230.150',
+        'HOST': '35.153.132.28',
         'PORT': '3306',
     }
 }
