@@ -86,13 +86,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'dbcontactos',
-        'USER': 'adminhuallpa',
-        'PASSWORD': 'Rebeca.huallpa.20.100%',
-        'HOST': 'database-huallpa.ckt8wggwrmmo.us-east-2.rds.amazonaws.com',
-        'PORT': '3306', 
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'USER': 'antu',
+        'PASSWORD': 'T3csup4861',
+        'HOST': '54.162.230.150',
+        'PORT': '3306',
     }
 }
 
